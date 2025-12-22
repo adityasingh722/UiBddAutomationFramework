@@ -26,10 +26,9 @@ public class login extends Reusable{
 	WebElement login_btn;
 	
 	public void doLogin(String userName, String password) {
-		userName_txt.sendKeys(userName);
-		password_txt.sendKeys(password);
-		waitforElementClickability(login_btn).click();
-		return new home
+		setText(userName_txt, userName);
+		setText(userName_txt, password);
+		clickButton(login_btn);
 	}
 	
 }

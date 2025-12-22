@@ -36,7 +36,8 @@ public class Base {
 	} else if (browserName.equalsIgnoreCase("edge")) {
 		System.out.println("Edge driver not initialized");
 	}
-		driver.findElement(null)
+		driver.get("https://cportal.jbvnl.co.in/cportal/#/user/login");
+		return driver;
 	}
 
 }

@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="utils.Base">
+      <class name="regression.firstTest">
         <methods>
-          <include name="initBrowser"/>
+          <include name="run"/>
         </methods>
-      </class> <!-- utils.Base -->
+      </class> <!-- regression.firstTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

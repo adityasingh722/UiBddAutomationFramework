@@ -5,18 +5,17 @@ import org.testng.annotations.Test;
 
 import pageObjects.home;
 import pageObjects.login;
+import utils.Base;
 
-public class firstTest {
+public class firstTest extends Base{
 	
-	WebDriver driver;
 	
 	
 	@Test
-	public void run(String username, String password) {
+	public void run() {
+		WebDriver driver = initBrowser("Chrome");
 		login obj1 = new login(driver);
-		obj1.doLogin(username, password);
-		home obj2 = new home(driver);
-		obj2.waitforElementVisibility(null)
+		obj1.doLogin("11222863893", "Veenasingh@722");
 	}
 
 }

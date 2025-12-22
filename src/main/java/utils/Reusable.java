@@ -13,16 +13,14 @@ public class Reusable extends Base{
 	
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(0));
 	
-	
-	
-	public void loadUrl(String url) {
-		if(url!=null) {
-			driver.get(url);
-		}
+	public void clickButton(WebElement ele) {
+		waitforElementVisibility(ele);
+		ele.click();
 	}
 	
-	public void clickButton(String buttonName) {
-		
+	public void setText(WebElement ele, String text) {
+		waitforElementVisibility(ele);
+		ele.sendKeys(text.trim());
 	}
 	
 	public WebElement waitforElementClickability(WebElement ele) {
