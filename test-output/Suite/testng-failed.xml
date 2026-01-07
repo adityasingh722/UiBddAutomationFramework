@@ -6,11 +6,11 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="tests.firstTest">
+      <class name="tests.JamabandiRaiyat">
         <methods>
-          <include name="login" invocation-numbers="0"/>
+          <include name="searchJamabandiRaiyat"/>
         </methods>
-      </class> <!-- tests.firstTest -->
+      </class> <!-- tests.JamabandiRaiyat -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

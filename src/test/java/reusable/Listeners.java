@@ -12,7 +12,6 @@ public class Listeners implements ITestListener {
 	public void onStart(ITestContext context) {
 		System.out.println("TEST STARTED: " + context.getName());
 		// It gives the name of the <test> from testng.xml
-
 	}
 
 	@Override
@@ -35,6 +34,7 @@ public class Listeners implements ITestListener {
 		float time = (result.getEndMillis() - result.getStartMillis()) / 1000;
 		// It gives the total execution time in seconds
 		System.out.println("EXECUTION TIME :" + time + "sec");
+		System.out.println(result.wasRetried());
 	}
 
 	@Override
@@ -46,6 +46,7 @@ public class Listeners implements ITestListener {
 		float time = (result.getEndMillis() - result.getStartMillis()) / 1000;
 		// It gives the total execution time in seconds
 		System.out.println("EXECUTION TIME :" + time + "sec");
+		System.out.println(result.wasRetried());
 
 	}
 
@@ -54,6 +55,7 @@ public class Listeners implements ITestListener {
 		System.out.println("SKIPPED: " + result.getMethod().getMethodName());
 		float time = (result.getEndMillis() - result.getStartMillis()) / 1000;
 		System.out.println("EXECUTION TIME :" + time + "sec");
+		System.out.println(result.wasRetried());
 	}
 
 }

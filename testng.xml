@@ -6,7 +6,7 @@
 </listeners>
   <test thread-count="5" name="Test">
     <classes>
-      <class name="tests.firstTest"/>
+      <class name="tests.JamabandiRaiyat"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
