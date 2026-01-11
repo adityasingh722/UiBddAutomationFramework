@@ -5,6 +5,11 @@
 <listener class-name="reusable.Listeners"/>
 </listeners>
   <test thread-count="5" name="Test">
+  <groups>
+  <run>
+  <include name="gr1"/>
+  </run>
+  </groups>
     <classes>
       <class name="tests.JamabandiRaiyat"/>
     </classes>

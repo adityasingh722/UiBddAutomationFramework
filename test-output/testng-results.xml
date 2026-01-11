@@ -2,15 +2,26 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-06T11:11:41 IST" name="Suite" finished-at="2026-01-06T11:12:09 IST" duration-ms="27285">
+  <suite started-at="2026-01-11T23:48:31 IST" name="Suite" finished-at="2026-01-11T23:49:19 IST" duration-ms="48464">
     <groups>
+      <group name="gr1">
+        <method signature="JamabandiRaiyat.searchJamabandiRaiyat()[pri:0, instance:tests.JamabandiRaiyat@4a8355dd]" name="searchJamabandiRaiyat" class="tests.JamabandiRaiyat"/>
+      </group> <!-- gr1 -->
     </groups>
-    <test started-at="2026-01-06T11:11:41 IST" name="Test" finished-at="2026-01-06T11:12:09 IST" duration-ms="27285">
+    <test started-at="2026-01-11T23:48:31 IST" name="Test" finished-at="2026-01-11T23:49:19 IST" duration-ms="48464">
       <class name="tests.JamabandiRaiyat">
-        <test-method signature="searchJamabandiRaiyat()[pri:0, instance:tests.JamabandiRaiyat@43df23d3]" started-at="2026-01-06T11:11:41 IST" name="searchJamabandiRaiyat" finished-at="2026-01-06T11:12:09 IST" duration-ms="27167" status="PASS">
+        <test-method is-config="true" signature="launchUrl()[pri:0, instance:tests.JamabandiRaiyat@4a8355dd]" started-at="2026-01-11T23:48:31 IST" name="launchUrl" finished-at="2026-01-11T23:48:55 IST" duration-ms="24485" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchUrl -->
+        <test-method signature="searchJamabandiRaiyat()[pri:0, instance:tests.JamabandiRaiyat@4a8355dd]" started-at="2026-01-11T23:48:55 IST" name="searchJamabandiRaiyat" finished-at="2026-01-11T23:49:17 IST" duration-ms="21330" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchJamabandiRaiyat -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:tests.JamabandiRaiyat@4a8355dd]" started-at="2026-01-11T23:49:17 IST" name="closeBrowser" finished-at="2026-01-11T23:49:19 IST" duration-ms="2523" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
       </class> <!-- tests.JamabandiRaiyat -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->

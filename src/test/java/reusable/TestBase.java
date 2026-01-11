@@ -1,19 +1,27 @@
-package utils;
+package reusable;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
-import io.cucumber.messages.types.Exception;
+import baseConfig.BrowserConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Base {
+public class TestBase extends BrowserConfig{
+
+	public WebDriver driver;
 	
-	public static  WebDriver driver;
-	public  WebDriver launchBrowser(String browserName) {
+	public  WebDriver launchBrowser() throws IOException {
+		Properties pro = loadProperties();
+		String browserName = pro.getProperty("browserName");
+		
 		if(browserName.equalsIgnoreCase("chrome")) {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
@@ -32,20 +40,30 @@ public class Base {
 		 * Warning Sites)
 		 */		
 		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
 		
 	} else if (browserName.equalsIgnoreCase("firefox")) {
 		System.out.println("Firefox driver not initialized");
 	} else if (browserName.equalsIgnoreCase("edge")) {
 		System.out.println("Edge driver not initialized");
 	}
-		driver.get("https://biharbhumi.bihar.gov.in/Biharbhumi/");
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
 		return driver;
 	}
 	
+	@AfterMethod(alwaysRun = true)
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(Duration.ofSeconds(2));
+		driver.quit();
+	}
 	
-	public void closeBrowser() {
-		driver.close();
+	@BeforeMethod(alwaysRun = true)
+	public void launchUrl() throws IOException {
+		Properties pro = loadProperties();
+		String url = pro.getProperty("url");
+		driver = launchBrowser();
+		driver.get(url);
 	}
 
 }

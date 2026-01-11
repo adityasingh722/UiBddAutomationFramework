@@ -14,18 +14,16 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import Datautils.ExcelUtility;
 import pageObjects.LoginPage;
 import reusable.Retry;
-import utils.Base;
+import reusable.TestBase;
 
-public class firstTest extends Base{
+public class firstTest extends TestBase{
 	
 	@Test(dataProvider = "ExcelData", retryAnalyzer = Retry.class)
 	public void login(String userName, String password) throws InterruptedException {
-		launchBrowser("chrome");
-		LoginPage login = new LoginPage();
+		LoginPage login = new LoginPage(driver);
 		login.login(userName, password);
 		driver.quit();
 	}

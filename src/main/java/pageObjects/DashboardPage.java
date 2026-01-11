@@ -1,12 +1,16 @@
 package pageObjects;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utils.Reusable;
+import CommonUtils.Helpers;
+import CommonUtils.Helpers;
 
-public class DashboardPage extends Reusable{
+public class DashboardPage extends Helpers{
+	
+	WebDriver driver;
 	
 	@FindBy(xpath = "//button[@id='MainContent_btnClose']")
 	WebElement bandKare_btn;
@@ -18,20 +22,22 @@ public class DashboardPage extends Reusable{
 	WebElement viewJamabandiRegister_link;
 	
 	
-	public DashboardPage() {
+	public DashboardPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
 	
 	public void changeLanguage() {
-		Reusable.scrollToElement(bandKare_btn);
-		Reusable.waitforVisibilityOfElement(bandKare_btn);
-		Reusable.waitforElementClickability(bandKare_btn).click();
-		Reusable.selectByVisibleText(language_drpdown, "English");
+		scrollToElement(bandKare_btn);
+		waitforVisibilityOfElement(bandKare_btn);
+		waitforElementClickability(bandKare_btn).click();
+		selectByVisibleText(language_drpdown, "English");
 	}
 	
 	public void gotoJamabandiRegister() {
-		Reusable.waitforElementClickability(viewJamabandiRegister_link).click();
+		waitforElementClickability(viewJamabandiRegister_link).click();
 	}
 	
 	

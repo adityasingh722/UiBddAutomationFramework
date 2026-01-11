@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="regression.firstTest">
+      <class name="tests.JamabandiRaiyat">
         <methods>
-          <include name="run"/>
+          <include name="launchUrl"/>
+          <include name="searchJamabandiRaiyat"/>
+          <include name="loadProperties"/>
         </methods>
-      </class> <!-- regression.firstTest -->
+      </class> <!-- tests.JamabandiRaiyat -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

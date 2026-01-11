@@ -10,12 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utils.Base;
-import utils.Reusable;
 
-public class LoginPage extends Reusable{
+import CommonUtils.Helpers;
+import CommonUtils.Helpers;
+
+public class LoginPage extends Helpers{
 	
-	
+	static WebDriver driver;
 	
 	@FindBy(id = "mat-input-0")
 	WebElement userName_txt;
@@ -38,21 +39,23 @@ public class LoginPage extends Reusable{
 	@FindBy(xpath = "//button[text()=' Yes ']")
 	WebElement yes_btn;
 	
-	public LoginPage() {
+	public LoginPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
 	
 	public void login(String userName, String password) throws InterruptedException {
 		
-		Reusable.waitforElementClickability(userName_txt).click();
-		Reusable.waitforVisibilityOfElement(userName_txt).sendKeys(userName);
-		Reusable.waitforVisibilityOfElement(password_txt).sendKeys(userName);
-		Reusable.waitforVisibilityOfElement(login_btn).click();
-		Reusable.waitforElementClickability(ok_btn).click();
-		Reusable.waitforElementClickability(profile_drpDown).click();
-		Reusable.waitforElementClickability(logout).click();
-		Reusable.waitforElementClickability(yes_btn).click();
+		waitforElementClickability(userName_txt).click();
+		waitforVisibilityOfElement(userName_txt).sendKeys(userName);
+		waitforVisibilityOfElement(password_txt).sendKeys(userName);
+		waitforVisibilityOfElement(login_btn).click();
+		waitforElementClickability(ok_btn).click();
+		waitforElementClickability(profile_drpDown).click();
+		waitforElementClickability(logout).click();
+		waitforElementClickability(yes_btn).click();
 		
 	}
 	

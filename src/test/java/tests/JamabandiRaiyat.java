@@ -1,5 +1,6 @@
 package tests;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
 
@@ -11,28 +12,25 @@ import org.testng.annotations.Test;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pageObjects.DashboardPage;
 import pageObjects.JamabandiRegisterPage;
-import utils.Base;
+import reusable.TestBase;
 
-public class JamabandiRaiyat extends Base{
+public class JamabandiRaiyat extends TestBase{
 
-	@Test
-	public void searchJamabandiRaiyat() throws InterruptedException {
-		launchBrowser("chrome");
-		DashboardPage dashboard = new DashboardPage();
+	@Test(groups = {"gr1"})
+	public void searchJamabandiRaiyat() throws InterruptedException, IOException {
+		DashboardPage dashboard = new DashboardPage(driver);
 		dashboard.changeLanguage();
 		String currentId = driver.getWindowHandle();
 		dashboard.gotoJamabandiRegister();
 		driver.getTitle();
-		JamabandiRegisterPage jama = new JamabandiRegisterPage();
+		JamabandiRegisterPage jama = new JamabandiRegisterPage(driver);
 		Set<String> Ids = driver.getWindowHandles();
 		for(String id : Ids) {
 			if(!id.equals(currentId)) {
 				driver.switchTo().window(id);
 				break;
 			}
-		}
-		System.out.println(driver.getWindowHandle());
-		
+		}		
 		jama.setZilaName("Siwan");
 		Thread.sleep(1000);
 		jama.setanchalName("Siswan");
