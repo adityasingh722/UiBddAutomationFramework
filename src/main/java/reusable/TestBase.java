@@ -11,10 +11,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import baseConfig.BrowserConfig;
+import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestBase extends BrowserConfig{
+public class TestBase extends ConfigReader{
 
 	public WebDriver driver;
 	

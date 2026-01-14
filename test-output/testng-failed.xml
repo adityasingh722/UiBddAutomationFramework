@@ -5,17 +5,14 @@
     <listener class-name="reusable.Listeners"/>
   </listeners>
   <test thread-count="5" name="Test(failed)">
-    <groups>
-      <run>
-        <include name="gr1"/>
-      </run>
-    </groups>
     <classes>
-      <class name="tests.JamabandiRaiyat">
+      <class name="tests.firstTest">
         <methods>
-          <include name="searchJamabandiRaiyat"/>
+          <include name="launchUrl"/>
+          <include name="login" invocation-numbers="0 1"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- tests.JamabandiRaiyat -->
+      </class> <!-- tests.firstTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -16,7 +16,7 @@ import reusable.TestBase;
 
 public class JamabandiRaiyat extends TestBase{
 
-	@Test(groups = {"gr1"})
+	@Test()
 	public void searchJamabandiRaiyat() throws InterruptedException, IOException {
 		DashboardPage dashboard = new DashboardPage(driver);
 		dashboard.changeLanguage();
