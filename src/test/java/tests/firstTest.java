@@ -27,7 +27,7 @@ import reusable.TestBase;
 
 public class firstTest extends TestBase{
 	
-	@Test(dataProvider = "hashdata",retryAnalyzer = RetryFailedTest.class)
+	@Test(dataProvider = "hashdata")
 	public void login(HashMap<Object, Object> map) throws InterruptedException {
 		LoginPage login = new LoginPage(driver);
 		login.login(map.get("username").toString(), map.get("password").toString());

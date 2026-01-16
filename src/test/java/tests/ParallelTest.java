@@ -1,22 +1,15 @@
 package tests;
 
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Set;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.helpers.Reporter;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pageObjects.DashboardPage;
 import pageObjects.JamabandiRegisterPage;
 import reusable.TestBase;
 
-public class JamabandiRaiyat extends TestBase{
+public class ParallelTest extends TestBase{
 	
 	@Test()
 	public void searchJamabandiRaiyat() throws InterruptedException, IOException {

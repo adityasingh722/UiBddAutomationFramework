@@ -1,10 +1,14 @@
 package reusable;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -52,6 +56,10 @@ public class TestBase extends ConfigReader{
 		return driver;
 	}
 	
+	public WebDriver getDriver() {
+		return driver;
+	}
+	
 	@AfterMethod(alwaysRun = true)
 	public void closeBrowser() throws InterruptedException {
 		Thread.sleep(Duration.ofSeconds(2));
@@ -64,6 +72,15 @@ public class TestBase extends ConfigReader{
 		String url = pro.getProperty("url");
 		driver = launchBrowser();
 		driver.get(url);
+	}
+	
+	public String takeScreenshot(String testCaseName,WebDriver driver) throws IOException {
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File src = ts.getScreenshotAs(OutputType.FILE);
+		File des = new File(System.getProperty("user.dir")+"//reports//"+testCaseName+"image.png");
+		FileUtils.copyFile(src, des);
+		
+		return System.getProperty("user.dir")+"//reports//"+testCaseName+"image.png";
 	}
 
 }
