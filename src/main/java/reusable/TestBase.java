@@ -1,7 +1,6 @@
 package reusable;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
@@ -24,8 +23,8 @@ public class TestBase extends ConfigReader{
 	
 	public  WebDriver launchBrowser() throws IOException {
 		Properties pro = loadProperties();
-		String browserName = pro.getProperty("browserName");
-		
+		//Below line uses ternary operator to get browser from maven command and if not given there then gets it from the properties file
+		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : pro.getProperty("browserName");		
 		if(browserName.equalsIgnoreCase("chrome")) {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
@@ -62,7 +61,7 @@ public class TestBase extends ConfigReader{
 	
 	@AfterMethod(alwaysRun = true)
 	public void closeBrowser() throws InterruptedException {
-		Thread.sleep(Duration.ofSeconds(2));
+		Thread.sleep(2000);
 		driver.quit();
 	}
 	
