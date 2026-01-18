@@ -1,12 +1,15 @@
 package pageObjects;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utils.Reusable;
+import utils.Helpers;
 
-public class JamabandiRegisterPage extends Reusable{
+public class JamabandiRegisterPage extends Helpers{
+	
+	static WebDriver driver;
 	
 	@FindBy(xpath = "//select[contains(@name,'District')]")
 	WebElement zila_drpdown;
@@ -38,34 +41,36 @@ public class JamabandiRegisterPage extends Reusable{
 	@FindBy(xpath = "//input[@id='MainContent_btnSearch']")
 	WebElement search_btn;
 	
-	public JamabandiRegisterPage() {
+	public JamabandiRegisterPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
 	
 	public void setZilaName(String zilaName) {
-		Reusable.selectByVisibleText(zila_drpdown, zilaName);
+		selectByVisibleText(zila_drpdown, zilaName);
 	}
 	
 	public void setanchalName(String anchalName) {
-		Reusable.selectByVisibleText(anchal_drpdown, anchalName);
+		selectByVisibleText(anchal_drpdown, anchalName);
 	}
 	
 	public void setHalka(String halkaName) throws InterruptedException {
-		Reusable.waitforElementClickability(proceed_btn).click();
+		waitforElementClickability(proceed_btn).click();
 		Thread.sleep(2000);
-		Reusable.selectByVisibleText(halka_drpdown, halkaName);
+		selectByVisibleText(halka_drpdown, halkaName);
 	}
 	
 	public void setMauja(String maujaValue) {
-		Reusable.selectByValue(mauja_drpdown, maujaValue);
+		selectByValue(mauja_drpdown, maujaValue);
 	}
 	
 	public void setsearchviaRaiyatName() {
-		Reusable.waitforElementClickability(pangi2_btn).click();
-		Reusable.waitforElementClickability(raiyatName_chkbox).click();
-		Reusable.waitforVisibilityOfElement(sumresult_txtbox).sendKeys(doSum());
-		Reusable.waitforElementClickability(search_btn).click();
+		waitforElementClickability(pangi2_btn).click();
+		waitforElementClickability(raiyatName_chkbox).click();
+		waitforVisibilityOfElement(sumresult_txtbox).sendKeys(doSum());
+		waitforElementClickability(search_btn).click();
 	}
 	
 	public String doSum() {
