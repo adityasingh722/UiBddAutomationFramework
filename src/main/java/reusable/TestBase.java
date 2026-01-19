@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -24,13 +25,15 @@ public class TestBase extends ConfigReader{
 	public  WebDriver launchBrowser() throws IOException {
 		Properties pro = loadProperties();
 		//Below line uses ternary operator to get browser from maven command and if not given there then gets it from the properties file
-		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : pro.getProperty("browserName");		
-		if(browserName.equalsIgnoreCase("chrome")) {
+		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : pro.getProperty("browserName");	
+		
+		if(browserName.toLowerCase().contains("chrome")) {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-notifications");
-		/* options.addArguments("--headless=new"); */  // modern headless
-		options.addArguments("--window-size=1920,1080");
+		if(browserName.toLowerCase().contains("headless")) {
+		options.addArguments("--headless=new");
+		}
 		/*
 		 * options.addArguments("--start-maximized");
 		 * options.addArguments("--incognito"); // running in incognito mode // Set
@@ -44,6 +47,7 @@ public class TestBase extends ConfigReader{
 		 */		
 		driver = new ChromeDriver(options);
 		
+		
 	} else if (browserName.equalsIgnoreCase("firefox")) {
 		System.out.println("Firefox driver not initialized");
 	} else if (browserName.equalsIgnoreCase("edge")) {
@@ -51,7 +55,7 @@ public class TestBase extends ConfigReader{
 	}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
+		driver.manage().window().setSize(new Dimension(1440, 900));
 		return driver;
 	}
 	
